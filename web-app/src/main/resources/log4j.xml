@@ -2,15 +2,40 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-  <appender name="CORE" class="org.apache.log4j.FileAppender">
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
     <param name="File"   value="${org.apache.cocoon.work.directory}/cocoon-logs/log4j.log" />
-    <param name="Append" value="false" />
     <layout class="org.apache.log4j.PatternLayout">
-      <param name="ConversionPattern" value="%d %-5p %t %c - %m%n"/>
+      <param name="ConversionPattern" value="%t %d [%7r] %6p - %30.30c - %m \n"/>
     </layout>
   </appender>
+  <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="encoding" value="UTF-8"/>
+    <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    <param name="Append" value="true"/>
+    <param name="file" value="${mem.log.path}/dxh.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%t %d [%7r] %6p - %30.30c - %m \n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="${mem.log.level}"/>
+      <!--<param name="LevelMax" value="FATAL "/>-->
+    </filter>
+  </appender>
+  <appender name="FILE-SQL" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    <param name="file" value="${mem.log.level}/dxh.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%t %d [%7r] %6p - %30.30c - %m \n"/>
+    </layout>
+  </appender>
+  <category name="org.apache.ibatis" additivity="true">
+    <priority value="${mem.log.level}"></priority>
+  </category>
+  <category name="java.sql" additivity="true">
+    <priority value="${mem.log.level}"/>
+  </category>
   <root>
-    <priority value="${org.apache.cocoon.log4j.loglevel}"/>
-    <appender-ref ref="CORE"/>
+    <priority value="DEBUG"/>
+    <appender-ref ref="CONSOLE"/>
   </root>
 </log4j:configuration>

@@ -20,7 +20,6 @@ import java.util.Date;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @RequestMapping(value = "dologin",method = RequestMethod.POST)
      public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");

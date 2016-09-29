@@ -9,7 +9,6 @@
         <tr>
             <td>用户名：<input type="text" name="username"></td>
             <td>密码：<input type="text" name="password"></td>
-
         </tr>
         <tr>
             <td>真实姓名：<input type="text" name="realname"></td>
