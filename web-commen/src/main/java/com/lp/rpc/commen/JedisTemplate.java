@@ -20,8 +20,40 @@ public class JedisTemplate{
         }
         private Logger logger = LoggerFactory.getLogger(JedisTemplate.class);
 
-        // 设置key并且设定一个默认失效时间
-        // 设置失效时间，此处单位秒seconds
+    /**
+     * 添加一条记录
+     * @param key
+     * @param value
+     */
+    public void set(String key, String value) {
+        if (key != null && value != null) {
+            JedisPool jedisPool = null;
+            Jedis jedis = null;
+            try {
+                jedisPool = getJedisPool();
+                if (jedisPool != null) {
+                    jedis = jedisPool.getResource();
+                    jedis.set(key, value);
+                    logger.info("jedisTemplate>>>set key={},value={} succeed", new Object[] {key, value});
+                }
+            } catch (Exception e) {
+                if (jedisPool != null) {
+                    jedisPool.returnBrokenResource(jedis);
+                }
+                logger.error("jedisTemplate>>>set key={},value={} failed e={}", new Object[] {key, value, e.getCause()});
+            } finally {
+                if (jedisPool != null) {
+                    jedisPool.returnResource(jedis);
+                }
+            }
+        }
+    }
+    /**
+     * 添加一条记录并设置时间
+     * @param key 键
+     * @param value 值
+     * @param expiredseconds 有效时间
+     */
         public void set(String key, String value, int expiredseconds) {
             if (key != null && value != null && expiredseconds > 0) {
                 JedisPool jedisPool = null;
@@ -57,41 +89,12 @@ public class JedisTemplate{
                 }
             }
         }
-
-        // 设置key-value不设置失效时间
-        public void set(String key, String value) {
-            if (key != null && value != null) {
-                JedisPool jedisPool = null;
-                Jedis jedis = null;
-                try {
-                    jedisPool = getJedisPool();
-                    if (jedisPool != null) {
-                        jedis = jedisPool.getResource();
-                        jedis.set(key, value);
-                        logger.info("jedisTemplate>>>set key={},value={} succeed", new Object[] {
-                                key,
-                                value
-                        });
-                    }
-                } catch (Exception e) {
-                    if (jedisPool != null) {
-                        jedisPool.returnBrokenResource(jedis);
-                    }
-                    logger.error("jedisTemplate>>>set key={},value={} failed e={}", new Object[] {
-                            key,
-                            value,
-                            e.getCause()
-                    });
-                } finally {
-                    if (jedisPool != null) {
-                        jedisPool.returnResource(jedis);
-                    }
-                }
-            }
-        }
-
-        // 根据key查询value
-        public String get(String key) {
+    /**
+     * 根据key查询value
+     * @param key
+     * @return
+     */
+    public String get(String key) {
             String value = "";
             if (null != key && !"".equals(key)) {
                 JedisPool jedisPool = null;
@@ -102,19 +105,13 @@ public class JedisTemplate{
                         jedis = jedisPool.getResource();
                         String tmp = jedis.get(key);
                         value = tmp != null ? tmp : value;
-                        logger.info("jedisTemplate>>>get key={},value={} succeed", new Object[] {
-                                key,
-                                value
-                        });
+                        logger.info("jedisTemplate>>>get key={},value={} succeed", new Object[] {key, value});
                     }
                 } catch (Exception e) {
                     if (jedisPool != null) {
                         jedisPool.returnBrokenResource(jedis);
                     }
-                    logger.error("jedisTemplate>>>get key={},value={} failed e={}", new Object[] {
-                            key,
-                            value,
-                            e.getCause()
+                    logger.error("jedisTemplate>>>get key={},value={} failed e={}", new Object[] {key, value, e.getCause()
                     });
                 } finally {
                     if (jedisPool != null) {
@@ -125,7 +122,12 @@ public class JedisTemplate{
             return value;
         }
 
-        // 设置hset,key-fieldKey-value值
+    /**
+     * 设置hset,key-fieldKey-value值
+     * @param key
+     * @param fieldKey
+     * @param value
+     */
         public void hset(String key, String fieldKey, String value) {
             if (key != null && value != null && fieldKey != null) {
                 JedisPool jedisPool = null;
@@ -135,22 +137,13 @@ public class JedisTemplate{
                     if (jedisPool != null) {
                         jedis = jedisPool.getResource();
                         jedis.hset(key, fieldKey, value);
-                        logger.info("jedisTemplate>>>hset key={},fieldKey={},value={} succeed", new Object[] {
-                                key,
-                                fieldKey,
-                                value
-                        });
+                        logger.info("jedisTemplate>>>hset key={},fieldKey={},value={} succeed", new Object[] {key, fieldKey, value});
                     }
                 } catch (Exception e) {
                     if (jedisPool != null) {
                         jedisPool.returnBrokenResource(jedis);
                     }
-                    logger.error("jedisTemplate>>>hset key={},fieldKey={},value={} failed e={}", new Object[] {
-                            key,
-                            fieldKey,
-                            value,
-                            e.getCause()
-                    });
+                    logger.error("jedisTemplate>>>hset key={},fieldKey={},value={} failed e={}", new Object[] {key, fieldKey, value, e.getCause()});
                 } finally {
                     if (jedisPool != null) {
                         jedisPool.returnResource(jedis);
@@ -158,8 +151,13 @@ public class JedisTemplate{
                 }
             }
         }
-        // 获取hgetall key对应的值，放在map<fieldKey,value>中返回
-        public Map<String, String> hgetAll(String key) {
+
+    /**
+     * 获取hgetall key对应的值，放在map<fieldKey,value>中返回
+     * @param key
+     * @return
+     */
+    public Map<String, String> hgetAll(String key) {
             Map<String, String> map = new HashMap<String, String>();
             if (key != null) {
                 JedisPool jedisPool = null;
@@ -170,20 +168,13 @@ public class JedisTemplate{
                         jedis = jedisPool.getResource();
                         Map<String, String> tmpmap = jedis.hgetAll(key);
                         map = tmpmap != null ? tmpmap : map;
-                        logger.info("jedisTemplate>>>hgetall key={},value={} succeed", new Object[] {
-                                key,
-                                tmpmap
-                        });
+                        logger.info("jedisTemplate>>>hgetall key={},value={} succeed", new Object[] {key, tmpmap});
                     }
                 } catch (Exception e) {
                     if (jedisPool != null) {
                         jedisPool.returnBrokenResource(jedis);
                     }
-                    logger.error("jedisTemplate>>>hget key={},value={},failed e={}", new Object[] {
-                            key,
-                            map,
-                            e.getCause()
-                    });
+                    logger.error("jedisTemplate>>>hget key={},value={},failed e={}", new Object[] {key, map, e.getCause()});
                 } finally {
                     if (jedisPool != null) {
                         jedisPool.returnResource(jedis);
@@ -195,7 +186,6 @@ public class JedisTemplate{
         /**
          * <pre>
          * 查询匹配keys全部key键值列表
-         *
          * redis里边的keys* 命令
          */
         public Set<String> keys(String keysPattern) {
@@ -209,19 +199,13 @@ public class JedisTemplate{
                         jedis = jedisPool.getResource();
                         Set<String> tmp = jedis.keys(keysPattern);
                         set = tmp != null ? tmp : set;
-                        logger.info("jedisTemplate>>>keys keyPattern={}, set.size={}", new Object[] {
-                                keysPattern,
-                                set.size()
-                        });
+                        logger.info("jedisTemplate>>>keys keyPattern={}, set.size={}", new Object[] {keysPattern, set.size()});
                     }
                 } catch (Exception e) {
                     if (jedisPool != null) {
                         jedisPool.returnBrokenResource(jedis);
                     }
-                    logger.error("jedisTemplate>>>keys keyPattern={}, failed e={}", new Object[] {
-                            keysPattern,
-                            e.getCause()
-                    });
+                    logger.error("jedisTemplate>>>keys keyPattern={}, failed e={}", new Object[] {keysPattern, e.getCause()});
                 } finally {
                     if (jedisPool != null) {
                         jedisPool.returnResource(jedis);
@@ -230,7 +214,13 @@ public class JedisTemplate{
             }
             return set;
         }
-        // 从hset中hget出对应的key-field对应的value值
+
+    /**
+     * 从hset中hget出对应的key-field对应的value值
+     * @param key
+     * @param fieldKey
+     * @return
+     */
         public String hget(String key, String fieldKey) {
             String value = "";
             if (key != null && fieldKey != null) {
@@ -242,22 +232,13 @@ public class JedisTemplate{
                         jedis = jedisPool.getResource();
                         String tmp = jedis.hget(key, fieldKey);
                         value = tmp != null ? tmp : value;
-                        logger.info("jedisTemplate>>>hget key={},fieldKey={},value={} succeed", new Object[] {
-                                key,
-                                fieldKey,
-                                value
-                        });
+                        logger.info("jedisTemplate>>>hget key={},fieldKey={},value={} succeed", new Object[] {key, fieldKey, value});
                     }
                 } catch (Exception e) {
                     if (jedisPool != null) {
                         jedisPool.returnBrokenResource(jedis);
                     }
-                    logger.error("jedisTemplate>>>hget key={},fieldKey={},value={} failed e={}", new Object[] {
-                            key,
-                            fieldKey,
-                            value,
-                            e.getCause()
-                    });
+                    logger.error("jedisTemplate>>>hget key={},fieldKey={},value={} failed e={}", new Object[] {key, fieldKey, value, e.getCause()});
                 } finally {
                     if (jedisPool != null) {
                         jedisPool.returnResource(jedis);
@@ -266,6 +247,31 @@ public class JedisTemplate{
             }
             return value;
         }
+
+    public void flushDB() {
+        JedisPool jedisPool = null;
+        Jedis jedis = null;
+        try {
+            jedisPool = getJedisPool();
+            jedis = jedisPool.getResource();
+            jedis.flushDB();
+            logger.info("flushDB succeed");
+        } catch (Exception e) {
+            if (jedisPool != null) {
+                jedisPool.returnBrokenResource(jedis);
+            }
+        } finally {
+            if (jedisPool != null) {
+                jedisPool.returnResource(jedis);
+            }
+        }
+    }
+
+
+
+
+
+
         public JedisPool getJedisPool() {
             return jedisPool;
         }
