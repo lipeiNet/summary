@@ -22,23 +22,24 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="rpc" />
-        <module name="web-app" />
-        <module name="web-commen" />
-        <module name="web-dao" />
-        <module name="web-domain" />
-        <module name="web-rpc" />
-        <module name="web-service" />
+        <module name="summary-app" />
+        <module name="summary-commen" />
+        <module name="summary-dao" />
+        <module name="summary-domain" />
+        <module name="summary-rabbitmq" />
+        <module name="summary-rpc" />
+        <module name="summary-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.7">
-      <module name="cnblogs_rpc" target="1.5" />
-      <module name="web-app" target="1.5" />
-      <module name="web-commen" target="1.5" />
-      <module name="web-dao" target="1.5" />
-      <module name="web-domain" target="1.5" />
-      <module name="web-rpc" target="1.5" />
-      <module name="web-service" target="1.5" />
+    <bytecodeTargetLevel>
+      <module name="summary" target="1.5" />
+      <module name="summary-app" target="1.5" />
+      <module name="summary-commen" target="1.5" />
+      <module name="summary-dao" target="1.5" />
+      <module name="summary-domain" target="1.5" />
+      <module name="summary-rabbitmq" target="1.6" />
+      <module name="summary-rpc" target="1.5" />
+      <module name="summary-service" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/cnblogs_rpc.iml" filepath="$PROJECT_DIR$/cnblogs_rpc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-app/web-app.iml" filepath="$PROJECT_DIR$/web-app/web-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-commen/web-commen.iml" filepath="$PROJECT_DIR$/web-commen/web-commen.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-dao/web-dao.iml" filepath="$PROJECT_DIR$/web-dao/web-dao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-domain/web-domain.iml" filepath="$PROJECT_DIR$/web-domain/web-domain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-rpc/web-rpc.iml" filepath="$PROJECT_DIR$/web-rpc/web-rpc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-service/web-service.iml" filepath="$PROJECT_DIR$/web-service/web-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary.iml" filepath="$PROJECT_DIR$/summary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-app/summary-app.iml" filepath="$PROJECT_DIR$/summary-app/summary-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-commen/summary-commen.iml" filepath="$PROJECT_DIR$/summary-commen/summary-commen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-dao/summary-dao.iml" filepath="$PROJECT_DIR$/summary-dao/summary-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-domain/summary-domain.iml" filepath="$PROJECT_DIR$/summary-domain/summary-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-rabbitmq/summary-rabbitmq.iml" filepath="$PROJECT_DIR$/summary-rabbitmq/summary-rabbitmq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-rpc/summary-rpc.iml" filepath="$PROJECT_DIR$/summary-rpc/summary-rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-service/summary-service.iml" filepath="$PROJECT_DIR$/summary-service/summary-service.iml" />
     </modules>
   </component>
 </project>
