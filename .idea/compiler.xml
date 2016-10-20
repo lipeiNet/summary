@@ -27,6 +27,7 @@
         <module name="summary-dao" />
         <module name="summary-domain" />
         <module name="summary-rabbitmq" />
+        <module name="summary-redis" />
         <module name="summary-rpc" />
         <module name="summary-service" />
       </profile>
@@ -38,6 +39,7 @@
       <module name="summary-dao" target="1.5" />
       <module name="summary-domain" target="1.5" />
       <module name="summary-rabbitmq" target="1.6" />
+      <module name="summary-redis" target="1.5" />
       <module name="summary-rpc" target="1.5" />
       <module name="summary-service" target="1.5" />
     </bytecodeTargetLevel>

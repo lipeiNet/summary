@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--导入rabbitMQ属性-->
+    <context:property-placeholder location="rabbitma-server.properties"/>
+    <!-- 创建connectionFactory -->
+    <bean id="rabbitConnectionFactory" class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
+        <constructor-arg value="${rabbit.hosts}"/>
+        <property name="username" value="${rabbit.username}"/>
+        <property name="password" value="${rabbit.password}"/>
+        <property name="virtualHost" value="${rabbit.virtualHost}"/>
+        <property name="channelCacheSize" value="5"/>
+    </bean>
+    <!-- 创建rabbitAdmin 代理类 -->
+    <bean id="rabbitAdmin" class="org.springframework.amqp.rabbit.core.RabbitAdmin">
+        <constructor-arg ref="rabbitConnectionFactory"/>
+    </bean>
+    <!--创建rabbitTemplate消息模板类-->
+    <bean id="rabbitTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
+        <constructor-arg ref="rabbitConnectionFactory"/>
+        <property name="queue" value="mytest"/>
+        <property name="routingKey" value="mytestKey"/>
+    </bean>
+</beans>

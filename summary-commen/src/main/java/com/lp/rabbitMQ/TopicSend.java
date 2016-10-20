@@ -38,7 +38,7 @@ public class TopicSend {
             for(String severity :routingKeys){
                 String message = "From "+severity+" routingKey' s message!";
                 channel.basicPublish(EXCHANGE_NAME, severity, null, message.getBytes());
-                System.out.println("TopicSend [x] Sent '" + severity + "':'" + message + "'");
+                System.out.println("TopicSend Sent '" + severity + "':'" + message + "'");
             }
         }catch (Exception e){
             e.printStackTrace();

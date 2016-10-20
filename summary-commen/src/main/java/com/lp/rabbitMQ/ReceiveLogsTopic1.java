@@ -8,7 +8,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by Administrator on 2016/10/14.
  */
-public class ReceiveLogsTopic {
+public class ReceiveLogsTopic1 {
     private static final String EXCHANGE_NAME = "topic_logs";
 
     public static void main(String[] args) throws IOException, TimeoutException {
@@ -27,13 +27,13 @@ public class ReceiveLogsTopic {
             channel.queueBind(queueName, EXCHANGE_NAME, routingKey);
             System.out.println("ReceiveLogsTopic1 exchange:" + EXCHANGE_NAME + ", queue:" + queueName + ", BindRoutingKey:" + routingKey);
         }
-        System.out.println("ReceiveLogsTopic1 [*] Waiting for messages. To exit press CTRL+C");
+        System.out.println("ReceiveLogsTopic1 Waiting for messages");
 
         Consumer consumer = new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String message = new String(body, "UTF-8");
-                System.out.println("ReceiveLogsTopic1 [x] Received '" + envelope.getRoutingKey() + "':'" + message + "'");
+                System.out.println("ReceiveLogsTopic1 Received '" + envelope.getRoutingKey() + "':'" + message + "'");
             }
         };
         channel.basicConsume(queueName, true, consumer);

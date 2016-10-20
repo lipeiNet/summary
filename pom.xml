@@ -16,6 +16,7 @@
         <module>summary-dao</module>
         <module>summary-commen</module>
         <module>summary-rabbitmq</module>
+        <module>summary-redis</module>
     </modules>
     <properties>
         <spring_version>3.1.0.RELEASE</spring_version>

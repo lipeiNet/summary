@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/summary-dao/summary-dao.iml" filepath="$PROJECT_DIR$/summary-dao/summary-dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-domain/summary-domain.iml" filepath="$PROJECT_DIR$/summary-domain/summary-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-rabbitmq/summary-rabbitmq.iml" filepath="$PROJECT_DIR$/summary-rabbitmq/summary-rabbitmq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-redis/summary-redis.iml" filepath="$PROJECT_DIR$/summary-redis/summary-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-rpc/summary-rpc.iml" filepath="$PROJECT_DIR$/summary-rpc/summary-rpc.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-service/summary-service.iml" filepath="$PROJECT_DIR$/summary-service/summary-service.iml" />
     </modules>

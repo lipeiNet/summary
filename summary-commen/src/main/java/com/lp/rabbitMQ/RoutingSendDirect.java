@@ -19,14 +19,13 @@ public class RoutingSendDirect {
         factory.setHost("localhost");
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
-
         //声明交换机
         channel.exchangeDeclare(EXCHANGE_NAME,"direct");
         //发送信息
         for (String routingKey:routingKeys){
-            String message = "Send the message level:" + routingKey;
+            String message = "RoutingSendDirect Send the message level:" + routingKey;
             channel.basicPublish(EXCHANGE_NAME,routingKey,null,message.getBytes());
-            System.out.println(" Send"+routingKey +"':'" + message);
+            System.out.println("RoutingSendDirect Send"+routingKey +"':'" + message);
         }
         channel.close();
         connection.close();

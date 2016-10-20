@@ -28,13 +28,13 @@ public class ReceiveLogsTopic2 {
             System.out.println("ReceiveLogsTopic2 exchange:"+EXCHANGE_NAME+", queue:"+queueName+", BindRoutingKey:" + bindingKey);
         }
 
-        System.out.println("ReceiveLogsTopic2 [*] Waiting for messages. To exit press CTRL+C");
+        System.out.println("ReceiveLogsTopic2 Waiting for messages");
 
         Consumer consumer = new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws UnsupportedEncodingException  {
                 String message = new String(body, "UTF-8");
-                System.out.println("ReceiveLogsTopic2 [x] Received '" + envelope.getRoutingKey() + "':'" + message + "'");
+                System.out.println("ReceiveLogsTopic2 Received '" + envelope.getRoutingKey() + "':'" + message + "'");
             }
         };
         channel.basicConsume(queueName, true, consumer);
