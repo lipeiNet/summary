@@ -29,9 +29,8 @@ public class RPCClient {
     }
 
     public String call(String message) throws IOException, InterruptedException {
-        String response = null;
+        String response;
         String corrID = UUID.randomUUID().toString();
-
         AMQP.BasicProperties props = new AMQP.BasicProperties().builder()
                 .correlationId(corrID).replyTo(replyQueueName).build();
         channel.basicPublish("", requestQueueName, props, message.getBytes("UTF-8"));
@@ -51,12 +50,12 @@ public class RPCClient {
 
     public static void main(String[] args) throws Exception {
         RPCClient rpcClient = null;
-        String response = null;
+        String response;
         try {
             rpcClient = new RPCClient();
-            System.out.println("RPCClient [x] Requesting fib(30)");
-            response = rpcClient.call("30");
-            System.out.println("RPCClient [.] Got '" + response + "'");
+            System.out.println("RPCClient  Requesting fib(20)");
+            response = rpcClient.call("20");
+            System.out.println("RPCClient  Got '" + response + "'");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
