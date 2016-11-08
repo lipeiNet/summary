@@ -7,8 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class Producer {
     public static void main(String[] args) {
-        ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext-rabbitmq-rpc-server.xml");
+        ApplicationContext context=new ClassPathXmlApplicationContext("springrabbitmq/spring-rabbitmq-producer.xml");
         AmqpTemplate amqpTemplate=context.getBean(AmqpTemplate.class);
-        amqpTemplate.convertAndSend("mytestKey","Hello RabbitMQ");
+        amqpTemplate.convertAndSend("spring.test.queueKey","Hello RabbitMQ");
     }
 }

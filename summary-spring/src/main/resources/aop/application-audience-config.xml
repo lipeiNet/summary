@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com.lp.summary.springinaction.aop.*"/>
+    <!--切面(需要触发的类)-->
+    <!--<bean id="audience" class="com.lp.summary.springinaction.aop.impl.AudienceImpl"/>-->
+    <aop:config>
+        <!--定义一个切面-->
+        <aop:aspect ref="audienceImpl">
+            <!--定义一个切点（就是要运行的类（也可以是类中的某个方法））-->
+            <aop:pointcut id="performance" expression="execution(* com.lp.summary.springinaction.aop.impl.PerformerImpl.perform(..))"/>
+             <!--定义通知-->
+            <aop:before pointcut-ref="performance" method="takeSeats"/>
+            <aop:before pointcut-ref="performance" method="turnoffCellphones"/>
+            <aop:after pointcut-ref="performance" method="applaud"/>
+            <aop:after-throwing pointcut-ref="performance" method="demandRefund"/>
+        </aop:aspect>
+        <aop:aspect ref="audienceImpl">
+            <aop:pointcut id="performance2" expression="execution(* com.lp.summary.springinaction.aop.impl.PerformerImpl.perform(..))"/>
+            <aop:around pointcut-ref="performance2" method="watchPerformance"></aop:around>
+        </aop:aspect>
+        <!--带参数的通知-->
+        <aop:aspect ref="mindReaderImpl">
+            <aop:pointcut id="volunteerance" expression="execution(* com.lp.summary.springinaction.aop.impl.Volunteer.thinkOfSomething(String))
+            and args(thoughts)"/>
+            <aop:before method="interceptThoughts" pointcut-ref="volunteerance" arg-names="thoughts"/>
+        </aop:aspect>
+        <!--通过切面注入新的功能-->
+        <aop:aspect>
+            <aop:declare-parents types-matching="com.lp.summary.springinaction.aop.Performer"
+                                 implement-interface="com.lp.summary.springinaction.aop.Contestant"
+                                 delegate-ref="com.lp.summary.springinaction.aop.impl.ContestantImpl"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

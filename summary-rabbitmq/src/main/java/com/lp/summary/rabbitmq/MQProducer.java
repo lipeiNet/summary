@@ -10,5 +10,4 @@ public interface MQProducer {
      * @param object
      */
     void sendDateToQueue(String queueKey, Object object);
-
 }

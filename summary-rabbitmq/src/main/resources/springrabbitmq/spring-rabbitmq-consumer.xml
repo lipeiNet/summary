@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/rabbit  http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="/rabbitmq-server.properties"/>
+    <context:component-scan base-package="com.lp.summary.rabbitmq.impl"/>
+    <rabbit:connection-factory id="connectionFactory" host="${rabbit.hosts}"
+                               port="${rabbit.port}" username="${rabbit.username}" password="${rabbit.password}" virtual-host="${rabbit.virtualHost}"
+                               channel-cache-size="50"/>
+    <rabbit:admin connection-factory="connectionFactory"/>
+    <rabbit:queue id="spring.test.queue" durable="true"></rabbit:queue>
+    <rabbit:direct-exchange name="${rabbit.exchange.direct}">
+        <rabbit:bindings>
+            <rabbit:binding queue="spring.test.queue" key="${rabbit.routingKey}"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+    <rabbit:template exchange="${rabbit.exchange.direct}" id="rabbitTemplate" connection-factory="connectionFactory"
+                     message-converter="jsonMessageConverter"></rabbit:template>
+    <bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.JsonMessageConverter"></bean>
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual"  concurrency="10">
+        <rabbit:listener queues="spring.test.queue" ref="work1"/>
+    </rabbit:listener-container>
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual"  concurrency="10">
+        <rabbit:listener queues="spring.test.queue" ref="work2"/>
+    </rabbit:listener-container>
+</beans>

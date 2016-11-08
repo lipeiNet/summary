@@ -4,6 +4,7 @@ import com.rabbitmq.client.*;
 import com.rabbitmq.client.AMQP.BasicProperties;
 
 import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by Administrator on 2016/10/14.
@@ -22,48 +23,31 @@ public class RPCServer {
         return fib(n - 1) + fib(n - 1);
     }
 
-    public static void main(String[] args) throws IOException {
-        Connection connection = null;
-        Channel channel = null;
-        try {
-            ConnectionFactory factory = new ConnectionFactory();
-            factory.setHost("localhost");
-            connection = factory.newConnection();
-            channel = connection.createChannel();
-            channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null);
-            channel.basicQos(1);
-            QueueingConsumer consumer = new QueueingConsumer(channel);
-            channel.basicConsume(RPC_QUEUE_NAME, false, consumer);
+    public static void main(String[] args) throws IOException, InterruptedException, TimeoutException {
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("localhost");
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
+        channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null);
+        channel.basicQos(1);
+        QueueingConsumer consumer = new QueueingConsumer(channel);
+        channel.basicConsume(RPC_QUEUE_NAME, false, consumer);
 
-            System.out.println("RPCServer Awating RPC request");
-            while (true) {
-                String response = null;
-                QueueingConsumer.Delivery delivery = consumer.nextDelivery();
+        System.out.println("RPCServer Awating RPC request");
+        while (true) {
+            QueueingConsumer.Delivery delivery = consumer.nextDelivery();
+            BasicProperties props = delivery.getProperties();
+            BasicProperties replyProps = new AMQP.BasicProperties.Builder().
+                    correlationId(props.getCorrelationId()).build();
 
-                BasicProperties props = delivery.getProperties();
-                BasicProperties replyprops = new AMQP.BasicProperties.Builder().
-                        correlationId(props.getCorrelationId()).build();
+            String message = new String(delivery.getBody(), "UTF-8");
+            int n = Integer.parseInt(message);
 
-                try {
-                    String message = new String(delivery.getBody(), "UTF-8");
-                    int n = Integer.parseInt(message);
-
-                    System.out.println("RPCServer [.] fib(" + message + ")");
-                    response = "" + fib(n);
-                } catch (Exception e) {
-                    System.out.println(" [.] " + e.toString());
-                    response = "";
-                } finally {
-                    channel.basicPublish("", props.getReplyTo(), replyprops, response.getBytes("UTF-8"));
-                    channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (connection != null) {
-                connection.close();
-            }
+            System.out.println("RPCServer fib(" + message + ")");
+            String response = "" + fib(n);
+            channel.basicPublish( "", props.getReplyTo(), replyProps, response.getBytes());
+            channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
         }
     }
 }
+

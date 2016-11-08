@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="connectionFactory"
+          class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
+        <constructor-arg value="localhost"/>
+        <property name="username" value="guest"/>
+        <property name="password" value="guest"/>
+        <!--通道的默认缓存大小为25;可以设置通道的值-->
+        <property name="connectionCacheSize" value="50"/>
+    </bean>
+</beans>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lp.summary.dao.UserDao">
+<insert id="add" parameterType="com.lp.web.beans.UserBean" keyProperty="id" useGeneratedKeys="true">
+    INSERT INTO user(username,password,realname,userroleid,createdate)VALUES
+    (#{username},#{password},#{realname},#{userroleid},#{createdate})
+</insert>
+    <select id="isExistUser" parameterType="com.lp.web.beans.UserBean" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM user WHERE username=#{username} AND password=#{password}
+    </select>
+</mapper>
