@@ -23,25 +23,33 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="summary-app" />
+        <module name="summary-base" />
         <module name="summary-commen" />
         <module name="summary-dao" />
         <module name="summary-domain" />
+        <module name="summary-dubbo-consumer" />
+        <module name="summary-dubbo-provider" />
         <module name="summary-rabbitmq" />
         <module name="summary-redis" />
         <module name="summary-rpc" />
         <module name="summary-service" />
+        <module name="summary-spring" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="summary" target="1.5" />
       <module name="summary-app" target="1.5" />
+      <module name="summary-base" target="1.5" />
       <module name="summary-commen" target="1.5" />
       <module name="summary-dao" target="1.5" />
       <module name="summary-domain" target="1.5" />
+      <module name="summary-dubbo-consumer" target="1.5" />
+      <module name="summary-dubbo-provider" target="1.6" />
       <module name="summary-rabbitmq" target="1.6" />
       <module name="summary-redis" target="1.5" />
-      <module name="summary-rpc" target="1.5" />
+      <module name="summary-rpc" target="1.6" />
       <module name="summary-service" target="1.5" />
+      <module name="summary-spring" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

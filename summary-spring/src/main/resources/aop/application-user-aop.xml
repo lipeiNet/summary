@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <context:component-scan base-package="com.lp.summary.springinaction.aop.*"/>
+    <aop:config>
+       <!-- <aop:aspect ref="operationLogImpl">
+            <aop:pointcut id="ServiceLog1" expression="execution(* com.lp.summary.springinaction.aop.*.insert*(..))"/>
+            <aop:after method="logRecord" pointcut-ref="ServiceLog1"></aop:after>
+        </aop:aspect>
+        <aop:aspect ref="operationLogImpl">
+            <aop:pointcut id="ServiceLog2" expression="execution(* com.lp.summary.springinaction.aop.*.select*(..))"/>
+            <aop:after method="selectRecord" pointcut-ref="ServiceLog2"></aop:after>
+        </aop:aspect>
+        <aop:aspect ref="operationLogImpl">
+            <aop:pointcut id="ServiceLog3" expression="execution(* com.lp.summary.springinaction.aop.*.*(..)))"/>
+            <aop:after method="logRecord" pointcut-ref="ServiceLog3"></aop:after>
+        </aop:aspect>-->
+        <aop:aspect ref="operationLogImpl">
+            <aop:pointcut id="ServiceLog4" expression="execution(* com.lp.summary.springinaction.aop.*.insert*(..))"/>
+          <aop:after method="logRecord" pointcut-ref="ServiceLog4"/>
+        </aop:aspect>
+        <aop:aspect ref="operationLogImpl">
+            <aop:pointcut id="ServiceLog5" expression="execution(* com.lp.summary.springinaction.aop.*.delete*(..))"/>
+            <aop:after method="logRecord" pointcut-ref="ServiceLog5"/>
+        </aop:aspect>
+        <aop:aspect ref="operationLogImpl">
+            <aop:pointcut id="ServiceLog6" expression="execution(* com.lp.summary.springinaction.aop.*.update*(..))"/>
+            <aop:after method="logRecord" pointcut-ref="ServiceLog6"/>
+        </aop:aspect>
+        <aop:aspect ref="operationLogImpl">
+            <aop:pointcut id="ServiceLog7" expression="execution(* com.lp.summary.springinaction.aop.*.select*(..))"/>
+            <aop:after method="selectRecord" pointcut-ref="ServiceLog7"/>
+        </aop:aspect>
+        <aop:aspect ref="operationLogImpl">
+            <aop:pointcut id="ServiceLog8" expression="execution(* com.lp.summary.springinaction.aop.*.*(..))"/>
+            <aop:after-throwing method="throwRecord" throwing="e" pointcut-ref="ServiceLog8"/>
+        </aop:aspect>
+        <aop:aspect ref="performanceMonitoring">
+            <aop:pointcut id="performanceMonitoringance" expression="execution(* com.lp.summary.springinaction.aop.*.*(..))"/>
+            <aop:around method="doAround" pointcut-ref="performanceMonitoringance"></aop:around>
+        </aop:aspect>
+    </aop:config>
+</beans>
