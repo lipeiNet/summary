@@ -8,7 +8,6 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <modules>
-
         <module>summary-service</module>
         <module>summary-domain</module>
         <module>summary-app</module>
@@ -17,13 +16,19 @@
         <module>summary-commen</module>
         <module>summary-rabbitmq</module>
         <module>summary-redis</module>
+        <module>summary-dubbo-provider</module>
+        <module>summary-dubbo-consumer</module>
+        <module>summary-base</module>
+        <module>summary-spring</module>
     </modules>
     <properties>
-        <spring_version>3.1.0.RELEASE</spring_version>
+        <spring_version>4.2.5.RELEASE</spring_version>
         <jackson.version>1.8.1</jackson.version>
         <log4j>1.2.17</log4j>
         <org.slf4j.version>1.7.12</org.slf4j.version>
         <org.unitils.version>3.4.3</org.unitils.version>
+        <rabbitmq.version>3.6.5</rabbitmq.version>
+        <spring.amqp.version>1.6.0.RELEASE</spring.amqp.version>
     </properties>
     <dependencies>
         <!--spring开始-->
@@ -122,6 +127,11 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
         <!--test开始-->
         <dependency>
             <groupId>org.unitils</groupId>
@@ -147,12 +157,15 @@
             <version>4.12</version>
         </dependency>
         <!--test结束-->
-        <!--rabbitMQ开始-->
         <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
-            <version>3.6.5</version>
+            <version>${rabbitmq.version}</version>
         </dependency>
-        <!--rabbitMQ结束-->
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>${spring.amqp.version}</version>
+        </dependency>
     </dependencies>
 </project>

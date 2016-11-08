@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/summary.iml" filepath="$PROJECT_DIR$/summary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/summary.iml" filepath="$PROJECT_DIR$/.idea/summary.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-app/summary-app.iml" filepath="$PROJECT_DIR$/summary-app/summary-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-base/summary-base.iml" filepath="$PROJECT_DIR$/summary-base/summary-base.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-commen/summary-commen.iml" filepath="$PROJECT_DIR$/summary-commen/summary-commen.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-dao/summary-dao.iml" filepath="$PROJECT_DIR$/summary-dao/summary-dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-domain/summary-domain.iml" filepath="$PROJECT_DIR$/summary-domain/summary-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-dubbo-consumer/summary-dubbo-consumer.iml" filepath="$PROJECT_DIR$/summary-dubbo-consumer/summary-dubbo-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-dubbo-provider/summary-dubbo-provider.iml" filepath="$PROJECT_DIR$/summary-dubbo-provider/summary-dubbo-provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-rabbitmq/summary-rabbitmq.iml" filepath="$PROJECT_DIR$/summary-rabbitmq/summary-rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-redis/summary-redis.iml" filepath="$PROJECT_DIR$/summary-redis/summary-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-rpc/summary-rpc.iml" filepath="$PROJECT_DIR$/summary-rpc/summary-rpc.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-service/summary-service.iml" filepath="$PROJECT_DIR$/summary-service/summary-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-spring/summary-spring.iml" filepath="$PROJECT_DIR$/summary-spring/summary-spring.iml" />
     </modules>
   </component>
 </project>
