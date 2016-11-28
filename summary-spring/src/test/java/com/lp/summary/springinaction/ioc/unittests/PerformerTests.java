@@ -1,5 +1,6 @@
 package com.lp.summary.springinaction.ioc.unittests;
 
+import com.lp.summary.springinaction.aop.Contestant;
 import com.lp.summary.springinaction.aop.Performer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
