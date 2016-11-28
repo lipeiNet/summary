@@ -9,6 +9,7 @@ public class TestQueue {
     public static void main(String[] args) {
         ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext-rabbitmq-producer.xml");
         MQProducer mqProducer=(MQProducer) context.getBean("mqProducer");
-        mqProducer.sendDateToQueue("spring.test.queueKey","Hello World");
+        mqProducer.sendDateToQueue("spring.test.queueKey1","Hello World spring.test.queueKey1");
+        mqProducer.sendDateToQueue("spring.test.queueKey2","Hello World spring.test.queueKey2");
     }
 }
