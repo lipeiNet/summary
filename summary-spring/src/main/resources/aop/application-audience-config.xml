@@ -30,11 +30,11 @@
             and args(thoughts)"/>
             <aop:before method="interceptThoughts" pointcut-ref="volunteerance" arg-names="thoughts"/>
         </aop:aspect>
-        <!--通过切面注入新的功能-->
+        <!--通过切面注入新的功能比如一个类功能不够可以通过切面在注入一个类-->
         <aop:aspect>
-            <aop:declare-parents types-matching="com.lp.summary.springinaction.aop.Performer"
+            <aop:declare-parents types-matching="com.lp.summary.springinaction.aop.Performer+"
                                  implement-interface="com.lp.summary.springinaction.aop.Contestant"
-                                 delegate-ref="com.lp.summary.springinaction.aop.impl.ContestantImpl"/>
+                                 default-impl="com.lp.summary.springinaction.aop.impl.ContestantImpl"/>
         </aop:aspect>
     </aop:config>
 </beans>

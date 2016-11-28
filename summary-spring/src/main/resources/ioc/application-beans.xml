@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="beanProcessor" class="com.lp.summary.springinaction.ioc.impl.MyBeanPostProcessor"/>
+    <bean id="instantiationAwareBeanPostProcessor" class="com.lp.summary.springinaction.ioc.impl.MyInstantiationAwareBeanPostProcessor">
+    </bean>
+
+    <bean id="beanFactoryPostProcessor" class="com.lp.summary.springinaction.ioc.impl.MyBeanFactoryPostProcessor">
+    </bean>
+    <bean id="person" class="com.lp.summary.springinaction.ioc.impl.Person"
+          scope="singleton" >
+        <property name="name" value="张三"/>
+        <property name="address" value="北京"/>
+        <property name="phone" value="123456789"/>
+    </bean>
+</beans>

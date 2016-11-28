@@ -25,15 +25,17 @@
     <!--durable:是否持久化
         exclusive: 仅创建者可以使用的私有队列，断开后自动删除
         auto_delete: 当所有消费客户端连接断开后，是否自动删除队列-->
-    <rabbit:queue id="spring-test-queue" durable="true" auto-delete="false" exclusive="false" name="${rabbit.queue}"></rabbit:queue>
+    <rabbit:queue id="spring-test-queue1" durable="true" auto-delete="false" exclusive="false" name="spring-test-queue1"></rabbit:queue>
+    <rabbit:queue name="spring-test-queue2" durable="true" auto-delete="false" exclusive="false"></rabbit:queue>
     <!--交换机定义-->
     <!--rabbit:direct-exchange：定义exchange模式为direct，
         意思就是消息与一个特定的路由键完全匹配，才会转发。
         rabbit:binding：设置消息queue匹配的key-->
     <rabbit:direct-exchange name="${rabbit.exchange.direct}" durable="true" auto-delete="false" id="${rabbit.exchange.direct}">
         <rabbit:bindings>
-            <rabbit:binding queue="spring-test-queue" key="${rabbit.routingKey}"></rabbit:binding>
-    </rabbit:bindings>
+            <rabbit:binding queue="spring-test-queue1" key="spring.test.queueKey1"/>
+            <rabbit:binding queue="spring-test-queue2" key="spring.test.queueKey2"/>
+      </rabbit:bindings>
     </rabbit:direct-exchange>
 
     <!--spring template声明-->
@@ -45,6 +47,9 @@
     <!--queues：监听的队列，多个的话用逗号（,）分隔
         ref：监听器-->
     <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">
-        <rabbit:listener queues="${rabbit.queue}" ref="queueListenter"></rabbit:listener>
+        <rabbit:listener queues="spring-test-queue1" method="onMessage" ref="queueListenter"></rabbit:listener>
+    </rabbit:listener-container>
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">
+        <rabbit:listener queues="spring-test-queue2" method="onMessage" ref="queueListenter"></rabbit:listener>
     </rabbit:listener-container>
 </beans>

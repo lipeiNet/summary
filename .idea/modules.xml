@@ -15,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/summary-rpc/summary-rpc.iml" filepath="$PROJECT_DIR$/summary-rpc/summary-rpc.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-service/summary-service.iml" filepath="$PROJECT_DIR$/summary-service/summary-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/summary-spring/summary-spring.iml" filepath="$PROJECT_DIR$/summary-spring/summary-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summary-springmvc/summary-springmvc.iml" filepath="$PROJECT_DIR$/summary-springmvc/summary-springmvc.iml" />
     </modules>
   </component>
 </project>

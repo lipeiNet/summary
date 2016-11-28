@@ -34,6 +34,7 @@
         <module name="summary-rpc" />
         <module name="summary-service" />
         <module name="summary-spring" />
+        <module name="summary-springmvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -50,6 +51,7 @@
       <module name="summary-rpc" target="1.6" />
       <module name="summary-service" target="1.5" />
       <module name="summary-spring" target="1.5" />
+      <module name="summary-springmvc" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

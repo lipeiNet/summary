@@ -43,6 +43,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/summary-app" />
+    <file type="web" url="file://$PROJECT_DIR$/summary-springmvc" />
     <type id="Spring" />
   </component>
   <component name="IdProvider" IDEtalkID="220BFE6074686C17F8FDF3DE47398DE6" />
