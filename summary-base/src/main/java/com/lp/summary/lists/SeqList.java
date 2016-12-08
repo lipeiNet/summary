@@ -1,4 +1,4 @@
-package com.lp.summary.lists.impl;
+package com.lp.summary.lists;
 
 import com.lp.summary.lists.IList;
 

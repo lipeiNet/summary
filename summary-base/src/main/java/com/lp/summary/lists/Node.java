@@ -1,4 +1,4 @@
-package com.lp.summary.lists.impl;
+package com.lp.summary.lists;
 
 /**
  * Created by Administrator on 2016/12/5.

@@ -1,6 +1,6 @@
 package com.lp.summary.liststest;
 
-import com.lp.summary.lists.impl.SinglyLinkedList;
+import com.lp.summary.lists.SinglyLinkedList;
 import org.junit.Test;
 
 /**
@@ -10,7 +10,7 @@ public class NodeTest {
     @Test
     public void  test1(){
         String[] strr={"1","h","ww","sd"};
-        SinglyLinkedList linkedList=new SinglyLinkedList(strr);
-        linkedList.toString();
+        //SinglyLinkedList linkedList=new SinglyLinkedList(strr);
+        //linkedList.toString();
     }
 }

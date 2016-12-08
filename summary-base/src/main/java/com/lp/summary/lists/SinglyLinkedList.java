@@ -1,4 +1,4 @@
-package com.lp.summary.lists.impl;
+package com.lp.summary.lists;
 
 import com.lp.summary.lists.IList;
 
@@ -37,5 +37,9 @@ public class SinglyLinkedList<T> implements IList<T> {
 
     public T search(T key) {
         return null;
+    }
+
+    public void insert(int i, T x) {
+
     }
 }

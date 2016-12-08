@@ -1,6 +1,6 @@
 package com.lp.summary.liststest;
 
-import com.lp.summary.lists.impl.SeqList;
+import com.lp.summary.lists.SeqList;
 import org.junit.Test;
 
 /**

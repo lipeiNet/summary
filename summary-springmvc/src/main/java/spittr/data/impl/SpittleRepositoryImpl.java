@@ -29,6 +29,6 @@ public class SpittleRepositoryImpl implements SpittleRepository {
 
     @Override
     public Spittle save(Spittle spittle) {
-
+     return null;
     }
 }
