@@ -13,5 +13,6 @@ public class CachedThreadPool {
             executorService.execute(new SimpleRunnable());
         }
         executorService.shutdown();
+        new Thread(){}.start();
     }
 }
