@@ -12,6 +12,12 @@
                                port="${rabbit.port}" username="${rabbit.username}" password="${rabbit.password}" virtual-host="${rabbit.virtualHost}"
                                channel-cache-size="50"/>
     <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!--设置ack模式为手动-->
+    <bean id="ackManual" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+        <property name="beanName" value="org.springframework.amqp.core.AcknowledgeMode.MANUAL"/>
+    </bean>
+
     <rabbit:queue id="spring-test-queue" durable="true" auto-delete="false" exclusive="false" name="${rabbit.queue}"></rabbit:queue>
     <!--交换机定义-->
     <!--rabbit:direct-exchange：定义exchange模式为direct，

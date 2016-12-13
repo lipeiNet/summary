@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ConsumerMain {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("amqp/amqp-consumer.xml");
+        System.out.println("开始监听");
     }
 }
 

@@ -12,6 +12,7 @@ public class Spittle implements Serializable {
     private String message;
     private Date postedTime;
 
+    public  Spittle(){};
     public Spittle(Long id, Spitter spitter, String message, Date postedTime) {
         this.id = id;
         this.spitter = spitter;
@@ -19,19 +20,35 @@ public class Spittle implements Serializable {
         this.postedTime = postedTime;
     }
 
+    public Spitter getSpitter() {
+        return spitter;
+    }
+
+    public void setSpitter(Spitter spitter) {
+        this.spitter = spitter;
+    }
+
     public Long getId() {
-        return this.id;
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getMessage() {
-        return this.message;
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Date getPostedTime() {
-        return this.postedTime;
+        return postedTime;
     }
 
-    public Spitter getSpitter() {
-        return this.spitter;
+    public void setPostedTime(Date postedTime) {
+        this.postedTime = postedTime;
     }
 }
