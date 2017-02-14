@@ -1,14 +1,19 @@
 package com.lp.summary.lists;
 
 /**
- * Created by Administrator on 2016/12/5.
+ * Created by Administrator on 2017/2/14.
+ * 定义节点
  */
 public class Node<T> {
-    public T data;
-    public Node<T> next;
-    public Node(){};
-    public Node(T data,Node<T> next){
-        this.data=data;
-        this.next=next;
+    public T data;//数据域
+    public Node next;//地址域
+
+    public Node() {
+        this(null, null);
+    }
+
+    public Node(T data, Node next) {
+        this.data = data;
+        this.next = next;
     }
 }
