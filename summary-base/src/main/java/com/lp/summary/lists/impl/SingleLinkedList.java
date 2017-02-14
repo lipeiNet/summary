@@ -38,27 +38,23 @@ public class SingleLinkedList<T> implements IList<T> {
     }
 
     public T get(int i) {
-        int j = 0;
-        Node<T> p = this.head.next;
-        while (p != null) {
-            if (j == i) {
-                return p.data;
+        if (i >= 0) {
+            Node<T> p = this.head;
+            for (int j = 0; j <= i; j++) {
+                p = p.next;
             }
-            p = p.next;
-            j++;
+            return p.data;
         }
         return null;
     }
 
     public void set(int i, T x) {
-        int j = 0;
-        Node<T> p = this.head.next;
-        while (p != null) {
-            if (j == i) {
-                p.data = x;
+        if (i >= 0) {
+            Node<T> p = this.head;
+            for (int j = 0; j <= i; j++) {
+                p = p.next;
             }
-            p = p.next;
-            j++;
+            p.data = x;
         }
     }
 
@@ -67,22 +63,20 @@ public class SingleLinkedList<T> implements IList<T> {
     }
 
     public T remove(int i) {
-        int j = 0;
-        Node<T> p = this.head.next;
-        T result = null;
-        while (p != null) {
-            if (j == i) {
-                result = (T) p.next.data;
-                p.next = p.next.next;
+        if (i >= 0) {
+            Node<T> p = this.head;
+            for (int j = 0; j < i; j++) {
+                p = p.next;
             }
-            p = p.next;
-            j++;
+            T old = p.data;
+            p.next = p.next.next;
+            return old;
         }
-        return result;
+        return null;
     }
 
     public void removeAll() {
-        this.head.next=null;
+        this.head.next = null;
     }
 
     public T search(T key) {
@@ -90,14 +84,12 @@ public class SingleLinkedList<T> implements IList<T> {
     }
 
     public void insert(int i, T x) {
-        int j = 0;
-        Node<T> p = this.head.next;
-        while (p != null) {
-            if (j == i) {
-                p.next = new Node<T>(x, p.next);
+        if (i >= 0) {
+            Node<T> p = this.head;
+            for (int j = 0; p != null && j < i; j++) {
+                p = p.next;
             }
-            p = p.next;
-            j++;
+            p.next = new Node<T>(x, p.next);
         }
     }
 }
