@@ -9,7 +9,7 @@ import org.junit.runners.JUnit4;
  * Created by Administrator on 2017/2/15.
  */
 @RunWith(JUnit4.class)
-public class SortedSingleLinkedList {
+public class SortedSingleLinkedListTests {
     @Test
     public void insert(){
         IList<Integer> list=new com.lp.summary.lists.impl.SortedSingleLinkedList<Integer>();
