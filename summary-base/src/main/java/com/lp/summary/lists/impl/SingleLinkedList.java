@@ -65,7 +65,7 @@ public class SingleLinkedList<T> implements IList<T> {
     public T remove(int i) {
         if (i >= 0) {
             Node<T> p = this.head;
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; p.next != null && j < i; j++) {
                 p = p.next;
             }
             T old = p.data;
@@ -86,7 +86,7 @@ public class SingleLinkedList<T> implements IList<T> {
     public void insert(int i, T x) {
         if (i >= 0) {
             Node<T> p = this.head;
-            for (int j = 0; p != null && j < i; j++) {
+            for (int j = 0; p.next != null && j < i; j++) {
                 p = p.next;
             }
             p.next = new Node<T>(x, p.next);
