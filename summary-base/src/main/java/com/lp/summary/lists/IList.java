@@ -57,4 +57,16 @@ public interface IList<T> {
     T search(T key);
 
     void insert(int i,T x);
+
+    /**
+     * 升序添加
+     * @param x
+     */
+    void insert(T x);
+
+    /**
+     * 升序删除
+     * @param x
+     */
+    void remove(T x);
 }
