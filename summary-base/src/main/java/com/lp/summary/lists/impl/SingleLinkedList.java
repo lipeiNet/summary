@@ -8,7 +8,7 @@ import com.lp.summary.lists.Node;
  * 单链表的实现
  */
 public class SingleLinkedList<T> implements IList<T> {
-    private Node<T> head;//头指针
+    protected Node<T> head;//头指针
 
     public SingleLinkedList() {
         this.head = new Node<T>();
@@ -91,5 +91,13 @@ public class SingleLinkedList<T> implements IList<T> {
             }
             p.next = new Node<T>(x, p.next);
         }
+    }
+
+    public void insert(T x) {
+        throw new UnsupportedOperationException("insert(T x)");
+    }
+
+    public void remove(T x) {
+        throw new UnsupportedOperationException("remove(T x)");
     }
 }
