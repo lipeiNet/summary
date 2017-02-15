@@ -11,8 +11,8 @@ public class SortedSingleLinkedList<T extends Comparable<T>> extends SingleLinke
         if (x == null) {
             return;
         }
-        Node<T> p = this.head;
-        Node<T> prev = p.next;
+        Node<T> prev = this.head;
+        Node<T> p = prev.next;
         while (p != null && p.data.compareTo(x) < 0) {
             prev = p;
             p = p.next;
@@ -29,8 +29,8 @@ public class SortedSingleLinkedList<T extends Comparable<T>> extends SingleLinke
         if (x==null){
             return;
         }
-        Node<T> p = this.head;
-        Node<T> prev = p.next;
+        Node<T> prev = this.head;
+        Node<T> p = prev.next;
         while (p!=null&&p.data.compareTo(x)<0){
             prev=p;
             p=p.next;
