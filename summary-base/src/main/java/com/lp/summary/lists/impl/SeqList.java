@@ -6,15 +6,15 @@ import com.lp.summary.lists.IList;
  * Created by Administrator on 2017/2/14.
  * 顺序表的实现
  */
-public class SqlList<T> implements IList<T> {
+public class SeqList<T> implements IList<T> {
     private Object[] element;
     private int len;
 
-    public SqlList() {
+    public SeqList() {
         this(64);
     }
 
-    public SqlList(int size) {
+    public SeqList(int size) {
         this.element = new Object[size];
         this.len = 0;
     }
@@ -45,7 +45,7 @@ public class SqlList<T> implements IList<T> {
     }
 
     public void insert(int i, T x) {
-        if (i < 0 || i > this.len - 1) {
+        if (i < 0 ) {
             throw new IndexOutOfBoundsException();
         }
         if (this.len == this.element.length) {
@@ -61,6 +61,15 @@ public class SqlList<T> implements IList<T> {
         this.element[i] = x;
         this.len++;
     }
+
+    public void insert(T x) {
+        throw new UnsupportedOperationException("insert(T x)");
+    }
+
+    public void remove(T x) {
+        throw new UnsupportedOperationException("remove(T x)");
+    }
+
     public void append(T x) {
         this.insert(this.len, x);
     }
