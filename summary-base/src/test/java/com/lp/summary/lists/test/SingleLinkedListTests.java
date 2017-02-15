@@ -40,4 +40,11 @@ public class SingleLinkedListTests {
         assertEquals("3",list.get(1));
         assertEquals(2,list.length());
     }
+    @Test
+    public void append(){
+        String[] elements = {"1", "2", "3"};
+        IList<String> list = new SingleLinkedList<String>(elements);
+        list.append("4");
+        assertEquals("4",list.get(3));
+    }
 }
