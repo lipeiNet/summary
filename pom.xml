@@ -21,6 +21,7 @@
         <module>summary-base</module>
         <module>summary-spring</module>
         <module>summary-springmvc</module>
+        <module>sharding-jdbc-sample</module>
     </modules>
     <properties>
         <spring_version>4.2.5.RELEASE</spring_version>

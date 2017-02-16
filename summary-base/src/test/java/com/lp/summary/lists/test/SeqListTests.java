@@ -36,4 +36,12 @@ public class SeqListTests {
         list.insert(1,"3");
         assertEquals("3",list.get(1));
     }
+    @Test
+    public void remove(){
+        IList<String> list = new SeqList<String>();
+        list.append("1");
+        list.append("2");
+        list.remove(0);
+        assertEquals("2",list.get(0));
+    }
 }

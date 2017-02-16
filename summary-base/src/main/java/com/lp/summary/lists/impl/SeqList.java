@@ -84,7 +84,7 @@ public class SeqList<T> implements IList<T> {
             this.len--;
             return temp;
         }
-        for (int j = i; j <= this.len - 1; j++) {
+        for (int j = i; j < this.len - 1; j++) {
             this.element[j] = this.element[j+1];
         }
         this.len--;

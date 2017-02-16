@@ -43,7 +43,9 @@ public class SingleLinkedList<T> implements IList<T> {
             for (int j = 0; j <= i; j++) {
                 p = p.next;
             }
-            return p.data;
+            if (p!=null){
+                return p.data;
+            }
         }
         return null;
     }
@@ -68,7 +70,7 @@ public class SingleLinkedList<T> implements IList<T> {
             for (int j = 0; p.next != null && j < i; j++) {
                 p = p.next;
             }
-            T old = p.data;
+            T old = (T) p.next.data;
             p.next = p.next.next;
             return old;
         }
