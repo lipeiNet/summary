@@ -20,9 +20,9 @@ public class CirDLinkedList<T> implements IList<T> {
     }
 
     public int length() {
-        DLinkedNode<T> p = this.head.next;
+        DLinkedNode<T> p = this.head;
         int i = 0;
-        while (p != head) {
+        while (p.next != head) {
             p = p.next;
             i++;
         }
@@ -104,11 +104,11 @@ public class CirDLinkedList<T> implements IList<T> {
     }
 
     public void insert(T x) {
-
+       throw new UnsupportedOperationException("insert(T x)");
     }
 
     public void remove(T x) {
-
+        throw new UnsupportedOperationException("remove(T x)");
     }
 }
 

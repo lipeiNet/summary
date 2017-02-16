@@ -22,6 +22,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="sharding-jdbc-sample" />
         <module name="summary-app" />
         <module name="summary-base" />
         <module name="summary-commen" />
@@ -38,6 +39,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="sharding-jdbc-sample" target="1.5" />
       <module name="summary" target="1.5" />
       <module name="summary-app" target="1.5" />
       <module name="summary-base" target="1.5" />

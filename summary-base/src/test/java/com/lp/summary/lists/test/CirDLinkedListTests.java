@@ -52,4 +52,10 @@ public class CirDLinkedListTests {
         list.remove(0);
         Assert.assertEquals("2",list.get(0));
     }
+    @Test
+    public void length(){
+        IList<String> list=new CirDLinkedList<String>();
+        list.append("1");
+        System.out.println(list.length());
+    }
 }
