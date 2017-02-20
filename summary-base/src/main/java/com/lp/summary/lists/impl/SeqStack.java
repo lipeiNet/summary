@@ -39,7 +39,7 @@ public class SeqStack<T> implements SStack<T> {
     }
 
     public T pop() {
-        return this.top == -1 ? null : (T) this.elements[this.top];
+        return this.top == -1 ? null : (T) this.elements[this.top--];
     }
 
     public T get() {
