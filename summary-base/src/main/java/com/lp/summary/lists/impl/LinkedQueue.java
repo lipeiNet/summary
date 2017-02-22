@@ -1,4 +1,8 @@
-package com.lp.summary.lists.test;
+package com.lp.summary.lists.impl;
+
+/**
+ * Created by Administrator on 2017/2/22.
+ */
 
 import com.lp.summary.lists.Node;
 import com.lp.summary.lists.Queue;
@@ -7,7 +11,7 @@ import com.lp.summary.lists.Queue;
  * Created by Administrator on 2017/2/19.
  * 链表实现队列
  */
-public class LinkedQueue<T> implements Queue<T> {
+public  class LinkedQueue<T> implements Queue<T> {
     private Node<T> front;
     private Node<T> rear;
 

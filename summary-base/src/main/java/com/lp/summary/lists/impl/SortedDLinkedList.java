@@ -1,6 +1,8 @@
 package com.lp.summary.lists.impl;
 
 import com.lp.summary.lists.DLinkedNode;
+import com.lp.summary.lists.Node;
+import com.lp.summary.lists.Queue;
 
 /**
  * Created by Administrator on 2017/2/15.
@@ -34,4 +36,6 @@ public class SortedDLinkedList<T extends Comparable<T>> extends CirDLinkedList<T
             p.next.prev = p.prev;
         }
     }
+
+
 }
