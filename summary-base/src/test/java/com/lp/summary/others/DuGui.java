@@ -12,6 +12,7 @@ public class DuGui {
     }
 
     public static int test(Long  n){
+
         if(n == null ){
             return 0;
         }
