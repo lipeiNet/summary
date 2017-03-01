@@ -13,20 +13,17 @@ public class Server implements Runnable {
     }
 
     public void run() {
-        while (!Thread.interrupted()) {
-            System.out.println("等待客户端请求");
-            try {
-                this.handler.waitRequest();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("处理客户端请求");
-            this.handler.receiveRequest();
-            try {
+        try {
+            while (!Thread.interrupted()) {
+                System.out.println("等待客户端请求");
+                this.handler.waitRequest();//第一步
+                System.out.println("处理客户端请求");
                 TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                this.handler.receiveRequest();//第四步
             }
+        } catch (InterruptedException e) {
+
         }
+        System.out.println("服务端处理已经完成");
     }
 }

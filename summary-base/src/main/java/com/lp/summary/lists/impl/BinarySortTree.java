@@ -13,6 +13,7 @@ public class BinarySortTree <T extends Comparable<T>> extends BinaryTree<T> {
     public BinarySortTree(T[] values){
         super();
         for (int i=0;i<values.length;i++){
+            insert(values[i]);
         }
     }
     public void insert(T x) {
@@ -30,9 +31,8 @@ public class BinarySortTree <T extends Comparable<T>> extends BinaryTree<T> {
                 }
                 if (x.compareTo(p.data) < 0) {
                     p = p.left;
-                }
-                if (x.compareTo(p.data) > 0) {
-                    p = p.right;
+                }else {
+                    p=p.right;
                 }
             }
             p = new BinaryNode<T>(x);
@@ -54,6 +54,7 @@ public class BinarySortTree <T extends Comparable<T>> extends BinaryTree<T> {
         if (p==null){
             return null;
         }
+        //首先找到删除节点的父节点p
         if (x.compareTo(p.data)<0){
             return remove(x,p.left,p);
         }
@@ -64,7 +65,7 @@ public class BinarySortTree <T extends Comparable<T>> extends BinaryTree<T> {
             BinaryNode<T> insucc=p.right;
             while (insucc.left!=null){
                 insucc=insucc.left;
-            }
+            }//找到要删除节点的节点
             p.data=insucc.data;
             return remove(p.data,p.right,p);
         }
@@ -74,6 +75,7 @@ public class BinarySortTree <T extends Comparable<T>> extends BinaryTree<T> {
             }else {
                 root=p.right;
             }
+            return p;
         }
         if (p==parent.left){
             if (p.left!=null){
