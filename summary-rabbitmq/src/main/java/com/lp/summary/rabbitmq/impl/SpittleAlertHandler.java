@@ -1,19 +1,9 @@
 package com.lp.summary.rabbitmq.impl;
 
-import com.google.gson.reflect.TypeToken;
-import com.lp.summary.rabbitmq.domain.Spittle;
-import com.migr.common.util.JsonUtil;
-import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
 import org.springframework.amqp.support.converter.JsonMessageConverter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 /**
  * Created by Administrator on 2016/11/18.

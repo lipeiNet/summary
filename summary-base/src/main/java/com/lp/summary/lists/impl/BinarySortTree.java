@@ -54,7 +54,7 @@ public class BinarySortTree <T extends Comparable<T>> extends BinaryTree<T> {
         if (p==null){
             return null;
         }
-        //首先找到删除节点的父节点p
+        //首先找到删除节点p
         if (x.compareTo(p.data)<0){
             return remove(x,p.left,p);
         }
