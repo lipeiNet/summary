@@ -82,6 +82,16 @@ public class SingleLinkedList<T> implements IList<T> {
     }
 
     public T search(T key) {
+        if (key==null){
+            return null;
+        }
+        Node<T> p=this.head.next;
+        while (p!=null){
+            if (p.data.equals(key)){
+                return p.data;
+            }
+            p=p.next;
+        }
         return null;
     }
 
